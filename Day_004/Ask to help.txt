@@ -1,0 +1,3 @@
+
+Phần đổi avatar em muốn chọn mở một cửa sổ cho phép chọn ảnh. Nhờ thầy chỉ elm hoặc cho em xin keyword để kiếm.
+(Em đã search "How to set image in html from folder" và một số từ tương tự nhưng không ra.)
