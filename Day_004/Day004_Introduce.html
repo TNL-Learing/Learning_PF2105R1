@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Vitae</title>
+    <title>Introduction</title>
     <style>
         * {
           box-sizing: border-box;
@@ -42,7 +42,7 @@
     <section>
         <div class="flex-container">
             <div class="flex-item-left">
-              <p> <img style="height: 100px" src="img/image.jpg" alt=""> </p>
+              <p> <img style="height: 200px" src="img/image.jpg" alt="Avatar" id="avatar" onclick="changeImage()"> </p>
               <h1 id="user_name" onclick="changeTextByID('user_name')">Insert your Full Name here</h1>
               <div style="text-align:left; color:white;">
 
@@ -134,6 +134,17 @@
     </section>
 
     <script>
+      function changeImage()
+      {
+        let path = prompt('Insert path');
+        if (!path) return;
+        var element = document.getElementById("avatar");
+        if (!element) return;
+        element.setAttribute("src", path);
+      }
+
+
+
       function changeTextByID(strID)
       {
         let new_value = prompt('Insert your text');
@@ -157,7 +168,9 @@
       }
       function removeFromList(strID)
       {
-        let removePosition = Number(prompt('Remove position:')) - 1;
+        let temp = prompt('Remove position:');
+        if (!temp) return;
+        let removePosition = Number(temp) - 1;
         let list_element = document.getElementById(strID);
         if (!list_element) return;
         if (!list_element.childNodes) return;
