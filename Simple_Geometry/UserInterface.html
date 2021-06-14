@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Geometry</title>
+</head>
+<link rel="stylesheet" href="Format.css">
+<style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    .flex-container {
+      display: flex;
+      flex-direction: row;
+      font-size: 20px;
+      text-align: center;
+    }
+    
+    .flex-item-left {
+      background-color: cadetblue;
+      padding: 10px;
+      flex: 30%;
+    }
+    
+    .flex-item-right {
+      background-color: papayawhip;
+      padding: 10px;
+      flex: 70%;
+    }
+</style>
+<body>
+
+    <section>
+        <div class="flex-container">
+            <div class="flex-item-left">
+                <form>
+                    <fieldset>
+                        <legend>Option</legend>
+                        <div>
+                            <label>Select type:</label>
+                            <select name="CurveType" id="CurveType" onchange="onChangeSectionType()">
+                                <option value="0">0th Order (Straight Line)</option>
+                                <option value="1">1st Order (Straight Line)</option>
+                                <option value="2" selected>2nd Order (Parabol)</option>
+                                <option value="3">3th Order</option> 
+                                <option value="4">4th Order</option> 
+                              </select>
+                        </div>
+                        <div>
+                            <p id="func_title">This function has form: y = ax^2 + bx + c</p>
+                            <table>
+                                <tr id="row_0">
+                                    <td>a = </dt>
+                                    <td><input type="number" id="ratio_0"></dt>
+                                </tr>
+                                <tr id="row_1">
+                                    <td>b = </dt>
+                                    <td><input type="number" id="ratio_1"></dt>
+                                </tr>
+                                <tr id="row_2">
+                                    <td>c = </dt>
+                                    <td><input type="number" id="ratio_2"></dt>
+                                </tr>
+                                <tr id="row_3" style="display:none;">
+                                    <td>d = </dt>
+                                    <td><input type="number" id="ratio_3"></dt>
+                                </tr>
+                                <tr id="row_4" style="display:none;">
+                                    <td>e = </dt>
+                                    <td><input type="number" id="ratio_4"></dt>
+                                </tr>
+                            </table>
+                            <br>
+                            <button type= "button" onclick="addFunctionToList('listFunc')" width="50%">Add</button>
+                        </div>
+                    </fieldset>
+                </form>
+                <form>
+                    <fieldset>
+                        <legend>List functions</legend>
+                        <ol id="listFunc" style="text-align: left;"></ol>
+                        <table>
+                            <tr>
+                                <td> <button type="button" onclick="removeFunctionFromList('listFunc')">Remove</button></td>
+                                <td> <input type="number" id = "removePos"></td>
+                            </tr>
+                        </table>
+                       
+                    </fieldset>
+                    
+                </form>
+            </div>
+
+
+            <div class="flex-item-right">
+                <p style="align-content: center;" id="view_title">View 1000px x 500px</p>
+                <br>
+                <td><canvas id="myCanvas" width="1000" height="500" ></canvas> </td>
+                <br>
+                <form>
+                    <table>
+                        <tr valign="top">
+                            <td height="100%">
+                                <fieldset>
+                                    <legend>Change Drawing Franm Properties</legend>
+                                    <table>
+                                        <tr>
+                                            <td><label>Width =</label></td>
+                                            <td><input type="nuber" id="property_width" value="1000"></td>
+                                            <td><label>Height =</label></td>
+                                            <td><input type="nuber" id="property_height" value="500"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label>Resolution:</label></td>
+                                            <td><input type="nuber" id="property_resolution" value="5"></td>
+                                            <td><label>Scale:</label></td>
+                                            <td><input type="nuber" id="property_scale" value="1"></td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <button type="button" onclick="onResetDrawingProperties()" id="id_reset">Reset</button>
+                                    <span>  </span>
+                                    <button type="button" onclick="onUpdateDrawingProperties()">Update</button>
+                                </fieldset>
+                            </td>
+                            <td height="100%">
+                                <fieldset>
+                                    <legend>Change View Space: </legend>
+                                    <table >
+                                        <tr>
+                                          <td>From x:</td>
+                                          <td><input type="nuber" value="-500" id="VS_Fx"></td>
+                                          <!-- <td>To x:</td>
+                                          <td><input type="nuber" value="500" id="VS_Tx"></td> -->
+                                          
+                                        </tr>
+                                        <tr>
+                                            <td>From y:</td>
+                                            <td><input type="nuber" value="-250" id="VS_Fy"></td>
+                                            <!-- <td>To y:</td>
+                                            <td><input type="nuber" value="250" id="VS_Ty"></td> -->
+                                        </tr>
+                                      </table>
+                                      <br>
+                                      <button type= "button" onclick="onResetViewSpace()">Reset</button>
+                                      <span>  </span>
+                                      <button type= "button" onclick=" onResetViewSpace()">Update</button>
+                                </fieldset>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    
+    <script src="MyMathLib.js">
+        window.onload = initializeDrawingFrame;
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onLoad="init()">
+    <p id="id" >qwertyuiop[sdfghjkl;szxdcvbnm</p>
+    <button onclick="calBMI()">BMI</button>
+    <button onclick="avr()">Average</button>
+    <button onclick="changeColor()">Average</button>
+    <button onclick="changeColor()">Average</button>
+    <br>
+    <p id="X"> </p>
+    <p id="Y"> </p>
+    <script>
+        function calBMI(){
+            let h =  Number(prompt("height = "));
+            let w =  Number(prompt("weight = "));
+            alert("BMI = " + w/(2*h));
+        }
+        function avr(){
+            let a =  Number(prompt("a = "));
+            let b =  Number(prompt("b = "));
+            let c =  Number(prompt("c = "));
+            alert("BMI = " + (a+b+c)/3);
+        }
+        function changeColor(){
+            document.getElementById("id").style.color = "red";
+        }
+        ns4 = (document.layers)? true:false
+        ie4 = (document.all)? true:false
+        function inf(){
+            while(true){
+                mousemove(e);
+            }
+        }
+        function init() {
+            if (ns4) {document.captureEvents(Event.MOUSEMOVE);}
+            document.onmousemove=mousemove;
+        }
+        function mousemove(e) {
+            if (ns4) {var mouseX=e.pageX; var mouseY=e.pageY}
+            if (ie4) {var mouseX=event.x; var mouseY=event.y}
+            //status="x= "+mouseX+", y= "+mouseY;
+            document.getElementById("X").innerText = "X= " +mouseX;
+            document.getElementById("Y").innerText = "Y= " +mouseY;
+        }
+    </script>
+
+</body> -->
+
+</html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .object {
+        width: 200px;
+        height: 50px;
+        line-height: 20px;
+        background: #f80;
+        color: #fff;
+        text-align: center;
+        font-size: 14px;
+        cursor: context-menu;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+    </style>
+    <script>
+      function init() {
+        window.addEventListener("mousemove", function (e) {
+          const x = window.Event
+            ? e.pageX
+            : event.clientX +
+              (document.documentElement.scrollLeft
+                ? document.documentElement.scrollLeft
+                : document.body.scrollLeft);
+          const y = window.Event
+            ? e.pageY
+            : event.clientY +
+              (document.documentElement.scrollTop
+                ? document.documentElement.scrollTop
+                : document.body.scrollTop);
+
+          let node = document.getElementById("id-object");
+          node.style.top = y - 10 + "px";
+          node.style.left = x - 35 + "px";
+          var text = "POINTER: " + "X= " +x+", Y= "+y;
+          document.getElementById("Show").textContent = text;
+        });
+      }
+
+      window.onload = init;
+    </script>
+  </head>
+  <body>
+    <div id="id-object" class="object">
+        <p id="Show"></p>
+    </div>
+  </body>
+</html>
